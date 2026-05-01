@@ -20,3 +20,14 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.send("My Assignment Web App is Running 🚀");
 });
+let tasks = [];
+
+app.post("/add-task", (req, res) => {
+  const { title } = req.body;
+  tasks.push({ title, status: "pending" });
+  res.send("Task added");
+});
+
+app.get("/tasks", (req, res) => {
+  res.json(tasks);
+});
